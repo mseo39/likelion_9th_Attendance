@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <title>멋쟁이사자처럼 at 순천향대학교</title>
+    <style>
+        * {
+            font-size: 16px;
+            font-family: Consolas, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="regibox" align="center">
+        <form method="POST" action="date">
+            {% csrf_token %}
+            <input type="date" id="date" name="date" value="2021-02-20" min="2021-02-20" max="2022-01-01">
+            <br><br>
+            <input type="submit" value="출석부 생성">
+        </form>
+    </div>
+</body>
+
+</html>

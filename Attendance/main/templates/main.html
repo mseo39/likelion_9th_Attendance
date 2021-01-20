@@ -6,20 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <title>멋쟁이사자처럼 at 순천향대학교</title>
+    <style>
+        * {
+            font-size: 16px;
+            font-family: Consolas, sans-serif;
+        }
+    </style>
 </head>
 
 <body>
     <div class="regibox" align="center">
+        {{date}}
         <h2>출석부</h2>
         <div class="regi-page" style="padding-top: 20px;">
-            {% for name in name %}
+            {% for names in names %}
             <form method="POST" action="chk">
-                <h4>이름: {{name.name}}</h4>
-
+                {{names.name}}
                 {% csrf_token %}
-                <input type="hidden" id="name" name="name" value={{name.name}}>
-                <input type="radio" name="attendance" value="출석" >출석
-                <input type="radio" name="attendance" value="지각" >지각
+                <input type="hidden" id="date" name="date" value={{date}}>
+                <input type="hidden" id="name" name="name" value={{names.name}}>
+                <input type="radio" name="attendance" value="출석">출석
+                <input type="radio" name="attendance" value="지각">지각
                 <input type="radio" name="attendance" value="결석">결석
                 <input type="radio" name="attendance" value="기타">기타
                 <!-- <input type="radio" name="attendance" value="기타" formaction="/chk">기타 -->

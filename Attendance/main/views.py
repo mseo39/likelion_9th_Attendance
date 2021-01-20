@@ -1,26 +1,40 @@
 from django.shortcuts import render, redirect
 import sqlite3
-from main.models  import Member #모델의 존재 알려주기
+from main.models  import Member, Attendance #모델의 존재 알려주기
 
 # Create your views here.
 
 def main(request):
 
-    name=Member.objects.all()
-    return render(request,'main.html',{'name':name})
+    return render(request,'produce.html')
 
 def chk(request):
     #폼 입력값 가져오기
-    name=request.POST['name']
-    attendance=request.POST['attendance']
+    attendance=Attendance()
+    attendance.name=request.POST['name']
+    attendance.attendance=request.POST['attendance']
+    attendance.date=request.POST['date']
+    names=Member.objects.all()
     
-    #데이터베이스 연결
-    conn=sqlite3.connect('member.db')
-    cursor=conn.cursor()
-    #데이터베이스 등록(삽입)
-    cursor.execute('''
-    insert into meminfo (name,attendance) values(?,?)''',(name,attendance))
-    conn.commit()
-    conn.close()
+    attendance.save()
     
-    return redirect('main') #login.html파일 렌더링
+    return render(request,'main.html',{'date':attendance.date,'names':names})
+
+def date(request):
+    #폼 입력값 가져오기
+    date=request.POST['date']
+    names=Member.objects.all()
+    
+    return render(request,'main.html',{'date':date,'names':names})
+
+def show(request):
+
+    return render(request,'show.html')
+
+def show1(request):
+
+    date=request.POST['date']
+    
+    info = Attendance.objects.filter(date__contains='{}'.format(date))
+
+    return render(request,'show1.html',{'info':info})

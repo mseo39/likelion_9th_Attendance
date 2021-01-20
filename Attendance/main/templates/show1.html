@@ -1,0 +1,11 @@
+<table border="1" width="500">
+    <tr>
+        <td>이름</td>
+        <td>출결</td>
+    {% for info in info %}
+    <tr>
+        <td>{{info.name}}</td>
+        <td>{{info.attendance}}</td>
+    </tr>
+    {% endfor %}
+</table>
