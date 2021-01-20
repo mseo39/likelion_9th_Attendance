@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <title>멋쟁이사자처럼 at 순천향대학교</title>
+</head>
+
+<body>
+    <div class="regibox" align="center">
+        <h2>출석부</h2>
+        <div class="regi-page" style="padding-top: 20px;">
+            {% for name in name %}
+            <form method="POST" action="chk">
+                <h4>이름: {{name.name}}</h4>
+
+                {% csrf_token %}
+                <input type="hidden" id="name" name="name" value={{name.name}}>
+                <input type="radio" name="attendance" value="출석" >출석
+                <input type="radio" name="attendance" value="지각" >지각
+                <input type="radio" name="attendance" value="결석">결석
+                <input type="radio" name="attendance" value="기타">기타
+                <!-- <input type="radio" name="attendance" value="기타" formaction="/chk">기타 -->
+                <br>
+                <button type="submit" value="submit">submit</button>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>
