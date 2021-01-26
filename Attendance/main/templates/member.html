@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <title>멋쟁이사자처럼 at 순천향대학교</title>
+    <style>
+        * {
+            font-size: 16px;
+            font-family: Consolas, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    {% for names in names %}
+    <a href="{% url 'detail' names.id %}">
+
+        <div class="all_member">
+
+            <p>{{names.id}}</p>
+            <p>{{names.name}}</p>
+
+        </div>
+    </a>
+    {% endfor %}
+
+    {% for member_name in member_name %}
+
+        <div class="aii_member">
+
+            <p>{{member_name.attendance}}</p>
+            <p>{{member_name.date}}</p>
+
+        </div>
+    </a>
+    {% endfor %}
+</body>
+
+</html>

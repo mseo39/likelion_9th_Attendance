@@ -19,9 +19,12 @@ import main.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('detail/<int:name_id>',main.views.detail,name="detail"),
     path('',main.views.main,name="main"),
     path('chk',main.views.chk,name="chk"),
     path('date',main.views.date,name="date"),
     path('show',main.views.show,name="show"),
     path('show1',main.views.show1,name="show1"),
+    path('date',main.views.date,name="date"),
+    path('member',main.views.member,name="member"),
 ]
