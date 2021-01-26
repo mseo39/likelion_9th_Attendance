@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,28 +16,28 @@
 </head>
 
 <body>
-    {% for names in names %}
-    <a href="{% url 'detail' names.id %}">
-
-        <div class="all_member">
-
-            <p>{{names.id}}</p>
-            <p>{{names.name}}</p>
-
-        </div>
-    </a>
-    {% endfor %}
+    <div style="width:10;height:300">
+    {{ data|safe }}
+    </div>
 
     {% for member_name in member_name %}
 
-        <div class="aii_member">
+    <div class="aii_member">
+        <p>{{member_name.attendance}}</p>
+        <p>{{member_name.date}}</p>
 
-            <p>{{member_name.attendance}}</p>
-            <p>{{member_name.date}}</p>
-
-        </div>
+    </div>
     </a>
     {% endfor %}
+
+    <div class="all_member">
+        {% for names in names %}
+        <a href="{% url 'detail' names.id %}">
+            <p>{{names.name}}</p>
+        </a>
+        {% endfor %}
+    </div>
+
 </body>
 
 </html>
