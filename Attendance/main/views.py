@@ -4,6 +4,8 @@ from main.models  import Member, Attendance #모델의 존재 알려주기
 import matplotlib.pyplot as plt
 from io import StringIO
 import numpy as np
+import matplotlib.font_manager as fm
+import matplotlib.ticker as ticker
 
 # Create your views here.
 
@@ -37,7 +39,7 @@ def chk(request):
     elif attendance.attendance=="기타":
         member_info.etc+=1
 
-    member1.save()
+    member_info.save()
     attendance.save()
 
     return render(request,'main.html',{'date':attendance.date,'names':names})
@@ -76,12 +78,18 @@ def return_graph(name_id):
    
     fig = plt.figure()
 
+    path = 'main/font/12롯데마트드림Medium.ttf'
+    fontprop = fm.FontProperties(fname=path, size=11)
+
     x=np.arange(4) #주어진 범위와 간격에 따라 균일한 값을 갖는 어레이를 생성하는 함수
-    valuetype=['attendance','absent','tardy','etc'] #x축에 표시될
+    valuetype=['출석','결석','지각','기타'] #x축에 표시될
     values=[name.attendance, name.absent, name.tardy, name.etc] #막대 그래프의 높이로 표시될 y 값 
-    plt.title("attendance")
+    plt.title("출석부", fontproperties=fontprop)
     plt.bar(x,values)
-    plt.xticks(x, valuetype)
+    plt.xticks(x, valuetype, fontproperties=fontprop)
+
+    ax=plt.axes()
+    ax.yaxis.set_major_locator(ticker.MultipleLocator(1))
 
     imgdata = StringIO()
     fig.savefig(imgdata, format='svg')
