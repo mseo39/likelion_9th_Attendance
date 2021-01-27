@@ -61,7 +61,7 @@ def show1(request):
     
     info = Attendance.objects.filter(date__contains='{}'.format(date))
 
-    return render(request,'show1.html',{'info':info})
+    return render(request,'show1.html',{'info':info, 'date':date})
 
 def detail(request, name_id):
     names=Member.objects.all()
