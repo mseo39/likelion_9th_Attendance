@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <title>멋쟁이사자처럼 at 순천향대학교</title>
+    <link rel="stylesheet" type="text/css" href="{%static 'css/attendance.css'%}">
     <style>
         * {
             font-size: 16px;
@@ -62,12 +65,12 @@
 
 
     <div class="regibox" align="center">
-        {{date}}
-        <h2>출석부</h2>
+        
+        <h2>{{date}} 출석부</h2>
         <div class="regi-page" style="padding-top: 20px;">
             {% for names in names %}
             <form method="POST" action="chk">
-                {{names.name}}
+                <strong>{{names.name}}:</strong>
                 {% csrf_token %}
                 <input type="hidden" id="date" name="date" value={{date}}>
                 <input type="hidden" id="name" name="name" value={{names.name}}>

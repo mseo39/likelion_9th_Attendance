@@ -42,14 +42,14 @@ def chk(request):
     member_info.save()
     attendance.save()
 
-    return render(request,'main.html',{'date':attendance.date,'names':names})
+    return render(request,'attendance.html',{'date':attendance.date,'names':names})
 
 def date(request):
     #폼 입력값 가져오기
     date=request.POST['date']
     names=Member.objects.all()
     
-    return render(request,'main.html',{'date':date,'names':names})
+    return render(request,'attendance.html',{'date':date,'names':names})
 
 def show(request):
 
