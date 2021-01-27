@@ -70,13 +70,13 @@ def detail(request, name_id):
 
     data = return_graph(name_id)
 
-    return render(request, 'member.html', {'names':names,'member_name':member_name,'data':data})
+    return render(request, 'member.html', {'names':names,'member_name':member_name,'data':data,'name':name})
 
 def return_graph(name_id):
 
     name=get_object_or_404(Member, pk=name_id)
    
-    fig = plt.figure()
+    fig = plt.figure(figsize=(4, 2.2))
 
     path = 'main/font/12롯데마트드림Medium.ttf'
     fontprop = fm.FontProperties(fname=path, size=11)
@@ -84,7 +84,6 @@ def return_graph(name_id):
     x=np.arange(4) #주어진 범위와 간격에 따라 균일한 값을 갖는 어레이를 생성하는 함수
     valuetype=['출석','결석','지각','기타'] #x축에 표시될
     values=[name.attendance, name.absent, name.tardy, name.etc] #막대 그래프의 높이로 표시될 y 값 
-    plt.title("출석부", fontproperties=fontprop)
     plt.bar(x,values)
     plt.xticks(x, valuetype, fontproperties=fontprop)
 

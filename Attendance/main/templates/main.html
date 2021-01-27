@@ -15,6 +15,52 @@
 </head>
 
 <body>
+
+    <nav class="main-menu">
+
+
+
+        <div>
+            <a class="logo" href="#">
+            </a>
+        </div>
+        <div class="settings">
+        </div>
+        <div class="scrollbar" id="style-1">
+
+            <ul>
+                <li>
+                    <a href="{% url 'main' %}">
+                        <i class="fa fa-home fa-lg"></i>
+                        <span class="nav-text">출석부 생성</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'show' %}">
+                        <i class="fa fa-user fa-lg"></i>
+                        <span class="nav-text">날짜별 조회</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'member' %}">
+                        <i class="fa fa-user fa-lg"></i>
+                        <span class="nav-text">학생별 조회</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'member' %}">
+                        <i class="fa fa-user fa-lg"></i>
+                        <span class="nav-text">학생 추가</span>
+                    </a>
+                </li>
+
+            </ul>
+    </nav>
+
+
     <div class="regibox" align="center">
         {{date}}
         <h2>출석부</h2>
