@@ -96,3 +96,18 @@ def return_graph(name_id):
 
     data = imgdata.getvalue()
     return data
+
+def member_add(request):
+
+    return render(request,'member_add.html')
+
+def member_add1(request):
+
+    member=Member()
+    member.name=request.POST['name']
+    member.student_id=request.POST['student_id']
+    member.major=request.POST['major']
+
+    member.save()
+
+    return redirect('member_add')

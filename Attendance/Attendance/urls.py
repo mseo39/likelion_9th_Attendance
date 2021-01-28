@@ -25,6 +25,7 @@ urlpatterns = [
     path('date',main.views.date,name="date"),
     path('show',main.views.show,name="show"),
     path('show1',main.views.show1,name="show1"),
-    path('date',main.views.date,name="date"),
     path('member',main.views.member,name="member"),
+    path('member_add',main.views.member_add,name="member_add"),
+    path('member_add1',main.views.member_add1,name="member_add1"),
 ]

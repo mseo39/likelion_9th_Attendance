@@ -6,47 +6,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <title>멋쟁이사자처럼 at 순천향대학교</title>
-    <link rel="stylesheet" type="text/css" href="{%static 'css/member.css'%}">
+    <link rel="stylesheet" type="text/css" href="{%static 'css/member_add.css'%}">
     <style>
         * {
             font-size: 16px;
             font-family: Consolas, sans-serif;
-            
         }
     </style>
 </head>
 
 <body>
-    <div class="main">
-        <div class="content">
-            <div class="member_info">
-                <h3>{{name.name}}</h3>
-                <p>{{name.student_id}}<br>{{name.major}}</p>
-            </div>
-            <div class="member_image">{{ data|safe }}</div>
 
-            <div class="member_attendance_all">
-                {% for member_name in member_name %}
+    <nav class="main-menu">
 
-                <div class="member_attendance">
-                    <p>{{member_name.attendance}}</p>
-                    <p>{{member_name.date}}</p>
 
-                </div>
-                </a>
-                {% endfor %}
-            </div>
+
+        <div>
+            <a class="logo" href="#">
+            </a>
         </div>
-        <div class="content1">
-            <div class="member_name">
-                {% for names in names %}
-                <a href="{% url 'detail' names.id %}">
-                    <p>{{names.name}}</p>
-                </a>
-                {% endfor %}
-            </div>
+        <div class="settings">
         </div>
+        <div class="scrollbar" id="style-1">
+
+            <ul>
+                <li>
+                    <a href="{% url 'main' %}">
+                        <i class="fa fa-home fa-lg"></i>
+                        <span class="nav-text">출석부 생성</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'show' %}">
+                        <i class="fa fa-user fa-lg"></i>
+                        <span class="nav-text">날짜별 조회</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'member' %}">
+                        <i class="fa fa-user fa-lg"></i>
+                        <span class="nav-text">학생별 조회</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'member_add' %}">
+                        <i class="fa fa-user fa-lg"></i>
+                        <span class="nav-text">학생 추가</span>
+                    </a>
+                </li>
+
+            </ul>
+    </nav>
+
+    <div class="regibox">
+        <h2>학생 정보</h2>
+        <form method="POST" action="member_add1">
+            {% csrf_token %}
+            <div>
+                <label for="name">이름: </label>
+                <input type="text" name="name" placeholder="이름을 입력하시오">
+            </div>
+            <div>
+                <label for="student_id">학번: </label>
+                <input type="text" name="student_id" placeholder="학번을 입력하시오">
+            </div>
+            <div>
+                <label for="major">학과: </label>
+                <input type="text" name="major" placeholder="학과를 입력하시오">
+            </div>
+            <br><br>
+            <button type="submit" value="submit">제출</button>
+
+        </form>
     </div>
 
 </body>
